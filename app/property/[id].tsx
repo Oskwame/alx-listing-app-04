@@ -1,7 +1,7 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
-import { useLocalSearchParams } from "expo-router";
 import PropertyDetail from "@/components/property/PropertyDetail";
+import axios from "axios";
+import { useLocalSearchParams } from "expo-router";
+import { useEffect, useState } from "react";
 
 type Property = {
   id: string | number;
@@ -26,7 +26,7 @@ export default function PropertyDetailPage() {
       setLoading(true);
       setError(null);
       try {
-        const response = await axios.get(`/api/properties/${id}`);
+        const response = await axios.get(`${process.env.NEXT_PUBLIC_API_BASE_URL}/properties/${id}`);
         setProperty(response.data);
       } catch (err) {
         setError("Error fetching property details");

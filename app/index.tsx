@@ -1,6 +1,6 @@
+import PropertyCard from "@/components/property/PropertyCard";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import PropertyCard from "@/components/property/PropertyCard";
 
 type Property = {
   id: string | number;
@@ -14,7 +14,7 @@ export default function Home() {
   useEffect(() => {
     const fetchProperties = async () => {
       try {
-        const response = await axios.get("/api/properties");
+        const response = await axios.get(`${process.env.NEXT_PUBLIC_API_BASE_URL}/properties`);
         setProperties(response.data);
       } catch (error) {
         console.error("Error fetching properties:", error);

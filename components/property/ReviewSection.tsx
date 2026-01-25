@@ -27,7 +27,7 @@ export default function ReviewSection({ propertyId }: ReviewSectionProps) {
 
       try {
         const response = await axios.get(
-          `/api/properties/${propertyId}/reviews`,
+          `${process.env.NEXT_PUBLIC_API_BASE_URL}/properties/${propertyId}/reviews`,
         );
         const data = Array.isArray(response.data) ? response.data : [];
         setReviews(data);
